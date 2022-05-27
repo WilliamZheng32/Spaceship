@@ -1,0 +1,6 @@
+void win(){
+
+}
+void winclicks(){
+  
+}
