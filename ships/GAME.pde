@@ -1,20 +1,21 @@
 void game() {
-  stars.add(new Star());
+  objects.add(0,new Star());
   background(0);
+  
   int i = 0;
-  while (i<stars.size()) {
-    Star s = stars.get(i);
-    s.show();
-    s.act();
-    if(s.lives == 0) stars.remove(i);
+  while (i<objects.size()) {
+    GameObject obj = objects.get(i);
+    obj.show();
+    obj.act();
+    if(obj.lives == 0) objects.remove(i);
     
     else{
     i++;
     }
   }
-  
+  textSize(10);
   text(frameRate,10,10);
-  text(stars.size(),10,30);
+  text(objects.size(),10,30);
 
   if (akey == true) {
     sx-=5;
@@ -31,4 +32,5 @@ void game() {
 }
 
 void gameclicks() {
+   mode=PAUSE;
 }

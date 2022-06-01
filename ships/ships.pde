@@ -1,9 +1,3 @@
-//Star[] stars;
-//int n = 50;
-
-ArrayList<Star> stars;
-ArrayList<GameObjects> objects;
-
 //colours
 color red = #FF0000;
 color yellow = #FFFF00;
@@ -27,16 +21,27 @@ final int PAUSE = 3;
 final int GAMEOVER = 4;
 final int WIN = 5;
 
+ArrayList<GameObject> objects;
+Starfighter player;
 
 float sx, sy, sd;
 boolean akey, dkey,skey,wkey,space;
+int colorchange, countersize, counter;
+
 
 void setup(){
    size(800, 800,FX2D);
-  textAlign(CENTER, CENTER);
   mode=GAME;
+  rectMode(CENTER);
+  countersize=10;
+  counter=0;
+  colorchange=black;
   
-  stars = new ArrayList<Star>();
+  objects = new ArrayList<GameObject>();
+   player = new Starfighter();
+  objects.add(player);
+  
+  reset();
 }
 void draw(){
   
