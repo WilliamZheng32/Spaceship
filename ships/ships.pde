@@ -30,7 +30,7 @@ int colorchange, countersize, counter;
 
 
 void setup(){
-   size(800, 800,FX2D);
+   size(800, 800);
   mode=GAME;
   rectMode(CENTER);
   countersize=10;

@@ -1,8 +1,23 @@
 void game() {
-  objects.add(0,new Star());
+  noStroke();
+
   background(0);
-  
-  int i = 0;
+  fill(blue,100);
+  rect(width/2, height/2, width, height);
+  addObjects();
+  gameEngine();
+  debug();
+ 
+}
+
+void addObjects(){
+    objects.add(0,new Star());
+    
+    if(frameCount % 30==0) objects.add(new Enemy());
+}
+
+void gameEngine(){
+   int i = 0;
   while (i<objects.size()) {
     GameObject obj = objects.get(i);
     obj.show();
@@ -13,22 +28,11 @@ void game() {
     i++;
     }
   }
-  textSize(10);
+}
+void debug(){
+   textSize(10);
   text(frameRate,10,10);
   text(objects.size(),10,30);
-
-  if (akey == true) {
-    sx-=5;
-  }
-  if (dkey == true) {
-    sx+=5;
-  }
-  if (skey == true) {
-    sy+=5;
-  }
-  if (wkey == true) {
-    sy-=5;
-  }
 }
 
 void gameclicks() {

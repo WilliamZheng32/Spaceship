@@ -1,8 +1,8 @@
 void gameover(){
     background(red);
   textSize(100);
-  text("YOU",400,400);
-  text("LOST",400,500);
+  text("YOU",300,400);
+  text("LOST",300,500);
   
   //restart button
   fill(white);
@@ -10,7 +10,7 @@ void gameover(){
   rect(300,600,200,100);
   fill(black);
   textSize(40);
-  text("RESTART",400,650);
+  text("RESTART",200,600);
 }
 
 void gameoverclicks(){

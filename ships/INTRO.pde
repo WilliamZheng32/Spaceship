@@ -1,19 +1,21 @@
 void intro(){
+  background(0);
    fill(colorchange);
   textSize(countersize);
-  text("BRICKBREAKER",400,200);
+  text("BULLET",200,200);
+  text("HELL",300,400);
   stroke(black);
   fill(white);
-  tactilerectangle(300,600,200,100);
-  rect(300,600,200,100);
+  tactilerectangle(400,600,200,100);
+  rect(400,600,200,100);
   fill(purple);
   textSize(50);
   
-  text("S",330,650);
-  text("T",360,650);
-  text("A",385,650);
-  text("R",420,650);
-  text("T",450,650);
+  text("S",330,620);
+  text("T",360,620);
+  text("A",385,620);
+  text("R",420,620);
+  text("T",450,620);
   if (countersize>120) {
     countersize=10;
   }
@@ -55,7 +57,7 @@ void tactilerectangle(int x1, int y1, int w1, int h1) {
 }
 void introclicks(){
   //mode game
-  if (mouseX > 300 && mouseX < 500 && mouseY> 600 && mouseY < 700) {
+  if (mouseX > 400 && mouseX < 600 && mouseY> 600 && mouseY < 700) {
    mode = GAME;
   }
 }
