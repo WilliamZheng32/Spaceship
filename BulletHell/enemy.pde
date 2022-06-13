@@ -40,6 +40,8 @@ class Enemy extends GameObject {
           objects.add(new Explosion(x, y, -10, 10));
           objects.add(new Explosion(x, y, 10, 0));
           objects.add(new Explosion(x, y, -10, 0));
+          
+           objects.add(0,(new Powerups(x, y, 0, 0));
         }
       }
       i++;

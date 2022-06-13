@@ -1,17 +1,14 @@
 class Starfighter extends GameObject {
 
-  int cooldown, threshold;
+  int cooldown, threshold, timer;
 
   Starfighter() {
 
     super(width/2, height/2, 0, 0, 40, red, 100);
     threshold = 20;
     cooldown = threshold;
+    timer = 0;
 
-    vx=max(vx, 40);
-    vx=min(vx, 760);
-    vy=max(vy, 40);
-    vy=min(vy, 760);
 
     textSize(100);
     text(lives, 10, 60);
@@ -19,6 +16,7 @@ class Starfighter extends GameObject {
 
   void act() {
     super.act();
+    
     //managing gun
     cooldown++;
     if (space == true&&cooldown >=threshold) {
@@ -39,7 +37,22 @@ class Starfighter extends GameObject {
       }
       i++;
     }
-
+    
+        //collisions
+    int p = 0;
+    while (i<objects.size()) {
+      GameObject obj = objects.get(p);
+      if (obj instanceof Powerups) {
+        if (collidingWith(obj)) {
+           lives--; 
+          obj.lives = 0;
+          threshold=10;
+          timer=+1;
+        }
+        if ( timer==10) threshold = 20;
+      }
+      i++;
+    }
 
     //controlling the starfighter
     if (akey == true) {
