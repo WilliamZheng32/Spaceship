@@ -8,15 +8,11 @@ class Starfighter extends GameObject {
     threshold = 20;
     cooldown = threshold;
     timer = 0;
-
-
-    textSize(100);
-    text(lives, 10, 60);
   }
 
   void act() {
     super.act();
-    
+
     //managing gun
     cooldown++;
     if (space == true&&cooldown >=threshold) {
@@ -35,24 +31,34 @@ class Starfighter extends GameObject {
         }
         if (lives==0) mode=GAMEOVER;
       }
-      i++;
-    }
-    
-        //collisions
-    int p = 0;
-    while (i<objects.size()) {
-      GameObject obj = objects.get(p);
-      if (obj instanceof Powerups) {
+      if (obj instanceof SecondEnemyBullet) {
         if (collidingWith(obj)) {
-           lives--; 
+          lives--; 
           obj.lives = 0;
-          threshold=10;
-          timer=+1;
         }
-        if ( timer==10) threshold = 20;
+        if (lives==0) mode=GAMEOVER;
       }
       i++;
     }
+
+    //collisions
+    int p = 0;
+    while (p<objects.size()) {
+      GameObject obj = objects.get(p);
+      if (obj instanceof Powerups) {
+        if (collidingWith(obj)) {
+          lives--; 
+          obj.lives = 0;
+          threshold=5;
+          timer=0;
+        }
+      }
+      p++;
+    }
+    if (timer<150) timer+=1;
+    if ( timer==150) threshold = 20;
+
+
 
     //controlling the starfighter
     if (akey == true) {

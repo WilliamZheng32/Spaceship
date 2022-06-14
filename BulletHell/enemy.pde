@@ -3,8 +3,7 @@ class Enemy extends GameObject {
   int cooldown, threshold;
 
   Enemy() {
-    super(random(width), -20, 0, 5, 40, yellow, 1); 
-
+    super(random(width), -20, 0, 5, 40, yellow, 1);     
     threshold = 60;
     cooldown = threshold;
     score=0;
@@ -41,7 +40,7 @@ class Enemy extends GameObject {
           objects.add(new Explosion(x, y, 10, 0));
           objects.add(new Explosion(x, y, -10, 0));
           
-           objects.add(0,(new Powerups(x, y, 0, 0));
+           
         }
       }
       i++;

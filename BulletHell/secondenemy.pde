@@ -3,15 +3,15 @@ class SecondEnemy extends GameObject {
   int cooldown, threshold;
 
   SecondEnemy() {
-    super(0, random(height), 5, 0, 50, green, 1);
+    super(0, random(height), 2, 0, 60, green, 1);
 
-    threshold = 100;
+    threshold = 110;
     cooldown = threshold;
     score=0;
   }
   void act() {
     super.act();
-    
+
     //managing gun
     cooldown++;
     if (cooldown >=threshold) {
@@ -30,9 +30,14 @@ class SecondEnemy extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
+          score+=1;
         }
       }
-      if (lives == 0) {
+      
+      i++;
+    }
+    
+    if (lives == 0) {
         //explosion
         objects.add(new Explosion(x, y, 0, 10));
         objects.add(new Explosion(x, y, 10, 10));
@@ -40,9 +45,10 @@ class SecondEnemy extends GameObject {
         objects.add(new Explosion(x, y, -10, 10));
         objects.add(new Explosion(x, y, 10, 0));
         objects.add(new Explosion(x, y, -10, 0));
+
+        objects.add(new Powerups(x, y, 0, 0));
       }
-      i++;
-    }
+    
     //remove if goes off screen
     if (offScreen()) {
       lives = 0;

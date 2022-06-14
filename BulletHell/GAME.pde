@@ -13,7 +13,7 @@ void addObjects() {
   objects.add(0, new Star());
 
   if (frameCount % 35==0) objects.add(new Enemy());
-  if (frameCount % 50==0) objects.add(new SecondEnemy());
+  if (frameCount % 80==0) objects.add(new SecondEnemy());
 }
 
 void gameEngine() {
@@ -33,6 +33,7 @@ void debug() {
   textSize(10);
   text(frameRate, 10, 10);
   text(objects.size(), 10, 30);
+  //text(Starfighter.lives(),10,60);
  
 }
 
