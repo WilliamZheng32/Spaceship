@@ -1,14 +1,13 @@
-class SecondEnemy extends GameObject {
+class ThirdEnemy extends GameObject {
 
   int cooldown, threshold;
   PImage image;
 
-  SecondEnemy() {
+  ThirdEnemy() {
 
-    super(0, random(0, 600), 2, 0, 80, green, 1);
+    super(800, 0 , -1, 1, 100, purple, 2);
 
-
-    threshold = 110;
+    threshold = 120;
     cooldown = threshold;
     score=0;
   }
@@ -33,10 +32,9 @@ class SecondEnemy extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
-          score+=1;
+          score+=2;
         }
       }
-
       i++;
     }
 
@@ -58,6 +56,6 @@ class SecondEnemy extends GameObject {
     }
   }
   void show() {
-    image(secondenemyspaceship, x, y, size, size);
+    image(thirdenemy, x, y, size, size);
   }
 }

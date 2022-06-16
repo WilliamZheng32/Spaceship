@@ -1,9 +1,10 @@
 void win() {
-  background(pink);
+  image(spacebackground, 400, 400, 800, 800);
+  fill(lightblue);
   textSize(100);
-  text("YOU", 400, 300);
-  text("WON", 400, 400);
-
+  textFont(JumpingFlash);
+  text("YOU", 400, 200);
+  text("WIN", 400, 400);
 }
 void winclicks() {
   mode = INTRO;

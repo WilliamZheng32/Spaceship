@@ -13,6 +13,11 @@ color brown = #964B00;
 color darkbrown = #5C4033;
 color pink = #FF1493;
 
+PImage[] gif;
+int f;
+int numberofframes;
+PFont JumpingFlash;
+
 //mode
 int mode;
 final int INTRO = 1;
@@ -27,15 +32,35 @@ float sx, sy, sd;
 boolean akey, dkey, skey, wkey, space;
 int colorchange, countersize, counter;
 
+PImage spaceship;
+PImage enemyspaceship;
+PImage secondenemyspaceship;
+PImage spacebackground;
+PImage gameoverbackground;
+PImage thirdenemy;
+
 
 void setup() {
   size(800, 800);
   mode=INTRO;
   rectMode(CENTER);
+  imageMode(CENTER);
   textAlign(CENTER, CENTER);
   countersize=10;
   counter=0;
   colorchange=black;
+
+  JumpingFlash = createFont("Jumping Flash.ttf", 100);
+
+  numberofframes = 36;
+  gif = new PImage[numberofframes];
+
+  spaceship = loadImage("spaceship.png");
+  enemyspaceship = loadImage("enemyspaceship.png");
+  secondenemyspaceship = loadImage("secondenemyspaceship.jpg");
+  spacebackground = loadImage("spacebackground.jpg");
+  gameoverbackground = loadImage("gameoverbackground.jpg");
+  thirdenemy = loadImage("thirdenemy.png");
 
   objects = new ArrayList<GameObject>();
   player = new Starfighter();
@@ -58,5 +83,4 @@ void draw() {
   } else {
     println("mode error: " + mode);
   }
-
 }

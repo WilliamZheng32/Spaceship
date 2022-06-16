@@ -1,7 +1,7 @@
 void game() {
   noStroke();
-
   background(0);
+  //image(spacebackground, 400, 400, 800, 800);
   fill(blue, 100);
   rect(width/2, height/2, width, height);
   addObjects();
@@ -14,6 +14,7 @@ void addObjects() {
 
   if (frameCount % 35==0) objects.add(new Enemy());
   if (frameCount % 80==0) objects.add(new SecondEnemy());
+  if (frameCount % 150==0) objects.add(new ThirdEnemy());
 }
 
 void gameEngine() {
@@ -33,10 +34,9 @@ void debug() {
   textSize(10);
   text(frameRate, 10, 10);
   text(objects.size(), 10, 30);
-  //text(Starfighter.lives(),10,60);
  
 }
 
 void gameclicks() {
-  mode=PAUSE;
+  mode = PAUSE;
 }

@@ -1,17 +1,26 @@
 class Starfighter extends GameObject {
 
   int cooldown, threshold, timer;
+  PImage image;
 
   Starfighter() {
 
-    super(width/2, height/2, 0, 0, 40, red, 100);
+    super(width/2, height/2, 0, 0, 100, red, 100);
+
     threshold = 20;
     cooldown = threshold;
     timer = 0;
+    image(spaceship, x, y, size, size);
   }
 
   void act() {
     super.act();
+
+    //spaceship restrictions
+    if (x<0) x = 0;
+    if (x>800) x = 800;
+    if (y<0) y = 0;
+    if (y>800) y = 800;
 
     //managing gun
     cooldown++;
@@ -20,7 +29,7 @@ class Starfighter extends GameObject {
       cooldown = 0;
     }
 
-    //collisions
+    //collisions with enemybullet
     int i = 0;
     while (i<objects.size()) {
       GameObject obj = objects.get(i);
@@ -36,12 +45,12 @@ class Starfighter extends GameObject {
           lives--; 
           obj.lives = 0;
         }
-        if (lives==0) mode=GAMEOVER;
       }
       i++;
     }
+    if (lives==0) mode=GAMEOVER;
 
-    //collisions
+    //collisions with powerups
     int p = 0;
     while (p<objects.size()) {
       GameObject obj = objects.get(p);
@@ -58,8 +67,6 @@ class Starfighter extends GameObject {
     if (timer<150) timer+=1;
     if ( timer==150) threshold = 20;
 
-
-
     //controlling the starfighter
     if (akey == true) {
       vx-=2;
@@ -74,7 +81,6 @@ class Starfighter extends GameObject {
       vy-=2;
     }
 
-
     if (akey == false) {
       vx*=0.9;
     }
@@ -87,5 +93,8 @@ class Starfighter extends GameObject {
     if (wkey == false) {
       vy*=0.9;
     }
+  }
+  void show() {
+    image(spaceship, x, y, size, size);
   }
 }

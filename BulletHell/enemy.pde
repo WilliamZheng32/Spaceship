@@ -2,6 +2,7 @@ class Enemy extends GameObject {
 
   int cooldown, threshold;
 
+
   Enemy() {
     super(random(width), -20, 0, 5, 40, yellow, 1);     
     threshold = 60;
@@ -19,8 +20,6 @@ class Enemy extends GameObject {
       cooldown = 0;
     }
 
-    text(score, 10, 50);
-    
     //collisions
     int i = 0;
     while (i<objects.size()) {
@@ -39,8 +38,6 @@ class Enemy extends GameObject {
           objects.add(new Explosion(x, y, -10, 10));
           objects.add(new Explosion(x, y, 10, 0));
           objects.add(new Explosion(x, y, -10, 0));
-          
-           
         }
       }
       i++;
@@ -49,5 +46,8 @@ class Enemy extends GameObject {
     if (offScreen()) {
       lives = 0;
     }
+  }
+  void show() {
+    image(enemyspaceship, x, y, size, size);
   }
 }

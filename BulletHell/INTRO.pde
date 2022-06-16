@@ -1,5 +1,16 @@
 void intro() {
-  background(blue);
+  int g = 0;
+  while (g < numberofframes) {
+    gif[g] = loadImage("frame_"+g+"_delay-0.03s.gif");
+    g+=1;
+  }
+  image(gif[f], 400, 400, 800, 800);
+  println(frameCount);
+  if (frameCount%2 == 0) f+=1;
+  if (f == numberofframes) {
+    f=0;
+  }
+
   fill(colorchange);
   textSize(countersize);
   text("BULLET", 400, 200);
