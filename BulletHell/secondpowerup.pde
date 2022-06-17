@@ -1,7 +1,7 @@
 class Secondpowerups extends GameObject {
 
   Secondpowerups(float x, float y, float vx, float vy) {
-    super(x, y, vx, vy, 10, purple, 1);
+    super(x, y, vx, vy, 10, brown, 1);
   }
 
   void show() {

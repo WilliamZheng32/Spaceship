@@ -49,6 +49,7 @@ class Starfighter extends GameObject {
       i++;
     }
     if (lives==0) mode=GAMEOVER;
+    if (score==2) mode = WIN;
 
     //collisions with powerups
     int p = 0;
@@ -66,6 +67,21 @@ class Starfighter extends GameObject {
     }
     if (timer<150) timer+=1;
     if ( timer==150) threshold = 20;
+    
+    //collisions with secondpowerups
+    int s = 0;
+    while (s<objects.size()) {
+      GameObject obj = objects.get(s);
+      if (obj instanceof Secondpowerups) {
+        if (collidingWith(obj)) {
+          lives--; 
+          obj.lives = 0;
+          player.lives=player.lives+1;
+        }
+        
+      }
+      s++;
+    }
 
     //controlling the starfighter
     if (akey == true) {

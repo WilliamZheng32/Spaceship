@@ -10,7 +10,6 @@ class SecondEnemy extends GameObject {
 
     threshold = 110;
     cooldown = threshold;
-    score=0;
   }
   void act() {
     super.act();
@@ -33,7 +32,6 @@ class SecondEnemy extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
-          score+=1;
         }
       }
 
@@ -49,7 +47,8 @@ class SecondEnemy extends GameObject {
       objects.add(new Explosion(x, y, 10, 0));
       objects.add(new Explosion(x, y, -10, 0));
 
-      objects.add(new Powerups(x, y, 0, 0));
+      objects.add(new Secondpowerups(x, y, 0, 0));
+      score+=1;
     }
 
     //remove if goes off screen

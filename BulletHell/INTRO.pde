@@ -13,6 +13,7 @@ void intro() {
 
   fill(colorchange);
   textSize(countersize);
+  textFont(JumpingFlash);
   text("BULLET", 400, 200);
   text("HELL", 400, 400);
   textSize(50);

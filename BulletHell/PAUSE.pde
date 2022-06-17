@@ -1,6 +1,6 @@
 void pause() {
   fill(white);
-  textSize(150);
+  textSize(100);
   text("PAUSED", 400, 400);
 }
 

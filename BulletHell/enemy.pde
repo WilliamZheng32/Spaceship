@@ -7,7 +7,6 @@ class Enemy extends GameObject {
     super(random(width), -20, 0, 5, 40, yellow, 1);     
     threshold = 60;
     cooldown = threshold;
-    score=0;
   }
 
   void act() {
@@ -28,7 +27,6 @@ class Enemy extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
-          score+=1;
         }
         if (lives == 0) {
           //explosion
@@ -38,6 +36,8 @@ class Enemy extends GameObject {
           objects.add(new Explosion(x, y, -10, 10));
           objects.add(new Explosion(x, y, 10, 0));
           objects.add(new Explosion(x, y, -10, 0));
+
+          score+=1;
         }
       }
       i++;

@@ -5,7 +5,7 @@ class ThirdEnemy extends GameObject {
 
   ThirdEnemy() {
 
-    super(800, 0 , -1, 1, 100, purple, 2);
+    super(800, 0, -1, 1, 100, purple, 2);
 
     threshold = 120;
     cooldown = threshold;
@@ -21,6 +21,7 @@ class ThirdEnemy extends GameObject {
       objects.add(new SecondEnemyBullet(x, y, -5, 5));
       objects.add(new SecondEnemyBullet(x, y, 5, -5));
       objects.add(new SecondEnemyBullet(x, y, -5, -5));
+      objects.add(new SecondEnemyBullet(x, y, 0, 5));
       cooldown = 0;
     }
 
@@ -32,7 +33,6 @@ class ThirdEnemy extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
-          score+=2;
         }
       }
       i++;
@@ -48,6 +48,7 @@ class ThirdEnemy extends GameObject {
       objects.add(new Explosion(x, y, -10, 0));
 
       objects.add(new Powerups(x, y, 0, 0));
+      score+=2;
     }
 
     //remove if goes off screen
