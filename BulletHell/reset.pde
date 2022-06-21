@@ -14,4 +14,6 @@ void reset() {
       i++;
     }
   }
+  player.show();
+  player.act();
 }
