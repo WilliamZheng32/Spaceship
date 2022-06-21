@@ -48,7 +48,7 @@ class SecondEnemy extends GameObject {
       objects.add(new Explosion(x, y, -10, 0));
 
       objects.add(new Secondpowerups(x, y, 0, 0));
-      score+=1;
+      player.score+=1;
     }
 
     //remove if goes off screen

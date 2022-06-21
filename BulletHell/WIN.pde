@@ -1,5 +1,5 @@
 void win() {
-  image(spacebackground, 400, 400, 800, 800);
+  image(spacebackground, 400, 400, width, height);
   fill(lightblue);
   textSize(100);
   textFont(JumpingFlash);

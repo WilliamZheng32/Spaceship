@@ -1,15 +1,16 @@
 class Starfighter extends GameObject {
 
-  int cooldown, threshold, timer;
+  int cooldown, threshold, timer, secondtimer;
   PImage image;
 
   Starfighter() {
 
-    super(width/2, height/2, 0, 0, 100, red, 100);
+    super(width/2, height/2, 0, 0, 100, red, 50);
 
     threshold = 20;
     cooldown = threshold;
     timer = 0;
+    secondtimer=0;
     image(spaceship, x, y, size, size);
   }
 
@@ -38,7 +39,6 @@ class Starfighter extends GameObject {
           lives--; 
           obj.lives = 0;
         }
-        if (lives==0) mode=GAMEOVER;
       }
       if (obj instanceof SecondEnemyBullet) {
         if (collidingWith(obj)) {
@@ -48,8 +48,24 @@ class Starfighter extends GameObject {
       }
       i++;
     }
-    if (lives==0) mode=GAMEOVER;
-    if (score==2) mode = WIN;
+    if (player.lives<=0) {
+      int g = 0;
+      while (g < NumberOfFrames) {
+        Gif[g] = loadImage("fframe_"+g+"_delay-0.03s.gif");
+        g+=1;
+      }
+      image(Gif[n], x, y, 200, 200);
+      //println(frameCount);
+      if (frameCount%2 == 0) n+=1;
+      if (n == NumberOfFrames) {
+        
+        mode=GAMEOVER;
+        //player.remove();
+      }
+    }
+
+    //if (secondtimer>=100 && lives==0) mode=GAMEOVER;
+    if (player.score>=50) mode = WIN;
 
     //collisions with powerups
     int p = 0;
@@ -67,7 +83,7 @@ class Starfighter extends GameObject {
     }
     if (timer<150) timer+=1;
     if ( timer==150) threshold = 20;
-    
+
     //collisions with secondpowerups
     int s = 0;
     while (s<objects.size()) {
@@ -76,25 +92,24 @@ class Starfighter extends GameObject {
         if (collidingWith(obj)) {
           lives--; 
           obj.lives = 0;
-          player.lives=player.lives+1;
+          player.lives=player.lives+5;
         }
-        
       }
       s++;
     }
 
     //controlling the starfighter
     if (akey == true) {
-      vx-=2;
+      vx-=1;
     }
     if (dkey == true) {
-      vx+=2;
+      vx+=1;
     }
     if (skey == true) {
-      vy+=2;
+      vy+=1;
     }
     if (wkey == true) {
-      vy-=2;
+      vy-=1;
     }
 
     if (akey == false) {

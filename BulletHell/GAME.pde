@@ -12,9 +12,11 @@ void game() {
 void addObjects() {
   objects.add(0, new Star());
 
-  //if (frameCount % 35==0) objects.add(new Enemy());
+ 
+
+  if (frameCount % 35==0) objects.add(new Enemy());
   if (frameCount % 80==0) objects.add(new SecondEnemy());
-  //if (frameCount % 175==0) objects.add(new ThirdEnemy());
+  if (frameCount % 175==0) objects.add(new ThirdEnemy());
 }
 
 void gameEngine() {
@@ -29,13 +31,18 @@ void gameEngine() {
       i++;
     }
   }
+  player.show();
+  player.act();
 }
 void debug() {
   textSize(10);
   text(frameRate, 20, 10);
   text(objects.size(), 20, 30);
-  text("lives:",30,50);
-  text(player.lives,90,50);
+  textSize(20);
+  text("lives:", 40, 70);
+  text(player.lives, 130, 70);
+  text("score:", 40, 120);
+  text(player.score, 130, 120);
 }
 
 void gameclicks() {

@@ -1,5 +1,5 @@
 void gameover() {
-  image(gameoverbackground, 400, 400, 800, 800);
+  image(gameoverbackground, 400, 400, width, height);
   textSize(100);
   fill(red);
   textFont(JumpingFlash);

@@ -14,7 +14,10 @@ color darkbrown = #5C4033;
 color pink = #FF1493;
 
 PImage[] gif;
+PImage[] Gif;
+int n;
 int f;
+int NumberOfFrames;
 int numberofframes;
 PFont JumpingFlash;
 
@@ -54,6 +57,8 @@ void setup() {
 
   numberofframes = 36;
   gif = new PImage[numberofframes];
+  NumberOfFrames = 24;
+  Gif = new PImage[NumberOfFrames];
 
   spaceship = loadImage("spaceship.png");
   enemyspaceship = loadImage("enemyspaceship.png");
@@ -63,9 +68,8 @@ void setup() {
   thirdenemy = loadImage("thirdenemy.png");
 
   objects = new ArrayList<GameObject>();
-  player = new Starfighter();
-  objects.add(player);
-
+ player = new Starfighter();
+ 
   reset();
 }
 void draw() {

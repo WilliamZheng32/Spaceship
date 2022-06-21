@@ -1,4 +1,4 @@
-class Enemy extends GameObject {
+ class Enemy extends GameObject {
 
   int cooldown, threshold;
 
@@ -37,7 +37,7 @@ class Enemy extends GameObject {
           objects.add(new Explosion(x, y, 10, 0));
           objects.add(new Explosion(x, y, -10, 0));
 
-          score+=1;
+          player.score+=1;
         }
       }
       i++;
