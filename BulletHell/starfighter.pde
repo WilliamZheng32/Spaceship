@@ -58,7 +58,7 @@ class Starfighter extends GameObject {
       //println(frameCount);
       if (frameCount%2 == 0) n+=1;
       if (n == NumberOfFrames) {
-        
+        n=0;
         mode=GAMEOVER;
         //player.remove();
       }
@@ -100,16 +100,16 @@ class Starfighter extends GameObject {
 
     //controlling the starfighter
     if (akey == true) {
-      vx-=1;
+      vx-=2;
     }
     if (dkey == true) {
-      vx+=1;
+      vx+=2;
     }
     if (skey == true) {
-      vy+=1;
+      vy+=2;
     }
     if (wkey == true) {
-      vy-=1;
+      vy-=2;
     }
 
     if (akey == false) {

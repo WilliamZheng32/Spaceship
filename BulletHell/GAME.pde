@@ -1,6 +1,6 @@
 void game() {
   noStroke();
-   image(spacebackground, 400, 400, width, height);
+  image(spacebackground, 400, 400, width, height);
   //image(spacebackground, 400, 400, 800, 800);
   fill(blue, 100);
   rect(width/2, height/2, width, height);
@@ -12,11 +12,15 @@ void game() {
 void addObjects() {
   objects.add(0, new Star());
 
- 
+
 
   if (frameCount % 35==0) objects.add(new Enemy());
   if (frameCount % 80==0) objects.add(new SecondEnemy());
-  if (frameCount % 175==0) objects.add(new ThirdEnemy());
+  if (player.score >= 25 && frameCount % 125==0) {
+    objects.add(new ThirdEnemy());
+  } else {
+    if (frameCount % 175==0) objects.add(new ThirdEnemy());
+  }
 }
 
 void gameEngine() {
